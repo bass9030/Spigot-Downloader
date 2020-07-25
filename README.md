@@ -1,6 +1,6 @@
 Spigot Downloader
 ======
-Easily download Minecraft Spigot files!<br>
+Easy download Minecraft Spigot files!<br>
 마인크래프트 스피곳 파일을 쉽게 다운로드할 수 있습니다!
 
 ## Korean(한국어)
