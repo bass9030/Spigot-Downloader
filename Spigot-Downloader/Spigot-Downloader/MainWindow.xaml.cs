@@ -27,6 +27,7 @@ namespace Spigot_Downloader
         string title = "Spigot Downloader";
         string newver;
         bool workresult;
+        RegistryKey reg;
 
         public static String GetWebText(string Url)
         {
@@ -47,8 +48,15 @@ namespace Spigot_Downloader
         {
             InitializeComponent();
             this.Loaded += OnLoaded;
-            string result = run_command("cmd.exe", "java -version");
-            if (result.IndexOf("java version") == -1)
+            try
+            {
+                reg = Registry.LocalMachine.CreateSubKey("SOFTWARE").CreateSubKey("JavaSoft").CreateSubKey("Java Update").CreateSubKey("Policy");
+                if (reg.GetValue("PostStatusUrl", "404") == "404")
+                {
+                    throw new Exception();
+                }
+            }
+            catch
             {
                 MessageBox.Show("자바를 설치후 실행해 주세요.\n자바 미설치시 프로그램이 작동하지 않습니다.\n\nPlease install Java and run it.\nIf Java is not installed, the program does not work.", title, MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 this.Close();
@@ -78,7 +86,6 @@ namespace Spigot_Downloader
             {
                 MessageBox.Show("Failed to retrieve BuildTools version list.\nIf the phenomenon persists, please press the \"Bug Report\"\nbutton in the program to report the bug.\n\nLearn more:\n" + ex, title, MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            RegistryKey reg;
             reg = Registry.LocalMachine.CreateSubKey("SOFTWARE").CreateSubKey("Spigot Downloader");
             string savever = reg.GetValue("BuildTools version", "").ToString();
             if (!new FileInfo("BuildTools.jar").Exists || savever != newver)
