@@ -5,8 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Spigot_Downloader"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Spigot Downloader" Height="269.666" Width="800">
     <Grid>
-        
+        <GroupBox x:Name="ver_box" Header="Version select" Margin="10,0,289,151" Height="76" VerticalAlignment="Bottom">
+            <Grid Margin="0,0,-2,-5" Height="70" VerticalAlignment="Top">
+                <Label x:Name="ver_sel_info" Content="Leave blank if the last digit of the version is empty, such as Virgin 1.8" Height="26" VerticalAlignment="Bottom" Margin="0,0,0,44" HorizontalAlignment="Left" Width="412"/>
+                <TextBox x:Name="ver1" Margin="5,0,0,16" TextWrapping="Wrap" Text="" TextAlignment="Center" IsEnabled="False" Height="23" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="24"/>
+                <Label x:Name="dot1" Content="." Margin="29,0,0,16" VerticalAlignment="Bottom" Height="23" FontWeight="Bold" IsEnabled="False" HorizontalAlignment="Left" Width="13"/>
+                <TextBox x:Name="ver2" Margin="42,0,0,16" TextWrapping="Wrap" Text="" TextAlignment="Center" IsEnabled="False" Height="23" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="24"/>
+                <TextBox x:Name="ver3" Margin="79,0,0,16" TextWrapping="Wrap" Text="" TextAlignment="Center" IsEnabled="False" Height="23" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="24"/>
+                <Label x:Name="dot2" Content="." Margin="66,0,0,16" VerticalAlignment="Bottom" Height="23" FontWeight="Bold" IsEnabled="False" HorizontalAlignment="Left" Width="13"/>
+                <CheckBox x:Name="is_latest_ver" Content="Latest Version" Margin="108,0,0,16" IsChecked="True" Height="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="110" Checked="is_latest_ver_Checked" Unchecked="is_latest_ver_Unchecked"/>
+            </Grid>
+
+        </GroupBox>
+        <ComboBox x:Name="language" Margin="662,0,10,57" SelectionChanged="ComboBox_SelectionChanged" Height="22" VerticalAlignment="Bottom">
+            <ComboBoxItem Content="한국어(Korean)"/>
+            <ComboBoxItem Content="English(영어)"/>
+        </ComboBox>
+        <Button x:Name="del_dummyfile_button" Margin="514,0,14,151" Click="del_dummyfile_button_Click" Height="56" VerticalAlignment="Bottom">
+            <TextBlock x:Name="del_dummyfile_text" Text="Delete BuildTools dummy file&#10;(If all settings are perfect but there is an error,&#10;please press the button.)" TextAlignment="Center"/>
+        </Button>
+        <GroupBox x:Name="sel_save_path_box" Header="Select a Path to save file" Margin="10,0,10,86" Height="58" VerticalAlignment="Bottom">
+            <Grid Margin="0,0,-2,-4">
+                <TextBox x:Name="path" Margin="10,10,0,10" TextWrapping="Wrap" Text="TextBox" HorizontalAlignment="Left" Width="706"/>
+                <Button x:Name="show_sel_path_gui" Content="..." Margin="721,10,0,10" Click="sel_path_Click" HorizontalAlignment="Left" Width="31"/>
+            </Grid>
+        </GroupBox>
+        <Button x:Name="downlaod" Content="Start Download" Margin="10,0,678,57" VerticalAlignment="Bottom" Click="downlaod_Click"/>
+        <Button x:Name="buildtoolsdownload" Content="Re-downlaod BuildTools.jar" Margin="119,0,499,57" VerticalAlignment="Bottom" Click="buildtoolsdownload_Click"/>
+        <Button x:Name="reportbug" Content="Report Bug" Margin="298,0,408,57" VerticalAlignment="Bottom" Click="reportbug_Click"/>
+        <ProgressBar x:Name="process" Height="19" Margin="10,0,10,11" VerticalAlignment="Bottom"/>
+        <Label x:Name="comment" Content="" Margin="10,0,14,30" VerticalAlignment="Bottom" Height="27" FontSize="12"/>
+
     </Grid>
 </Window>
