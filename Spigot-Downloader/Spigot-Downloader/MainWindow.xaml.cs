@@ -47,7 +47,12 @@ namespace Spigot_Downloader
         {
             InitializeComponent();
             this.Loaded += OnLoaded;
-
+            string result = run_command("cmd.exe", "java -version");
+            if (result.IndexOf("java version") == -1)
+            {
+                MessageBox.Show("자바를 설치후 실행해 주세요.\n자바 미설치시 프로그램이 작동하지 않습니다.\n\nPlease install Java and run it.\nIf Java is not installed, the program does not work.", title, MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                this.Close();
+            }
             dummyfiledel = new BackgroundWorker()//더미파일 삭제
             {
                 WorkerReportsProgress = true,
@@ -231,8 +236,15 @@ namespace Spigot_Downloader
                             comment.Content = "Deleteing... " + i;
                         }
                     }));
-                    DirectoryInfo directory = new DirectoryInfo(@"./" + i);
-                    directory.Delete(true);
+
+                    DirectoryInfo dir = new DirectoryInfo(@"./" + i);
+
+                    System.IO.FileInfo[] files = dir.GetFiles("*.*",
+                    SearchOption.AllDirectories);
+
+                    foreach (System.IO.FileInfo file in files)
+                        file.Attributes = FileAttributes.Normal;
+                    Directory.Delete(@"./" + i, true);
                 }
                 catch
                 {
@@ -365,7 +377,7 @@ namespace Spigot_Downloader
                 var versionlist = doc.Select("a.tip.model-link.inside.build-link.display-name");
                 newver = NSoupClient.Parse(versionlist.ToArray()[0].ToString()).Text();
             }
-            catch (Exception)
+            catch
             {
             }
             RegistryKey reg;
