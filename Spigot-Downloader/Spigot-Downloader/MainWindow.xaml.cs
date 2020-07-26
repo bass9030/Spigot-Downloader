@@ -50,11 +50,7 @@ namespace Spigot_Downloader
             this.Loaded += OnLoaded;
             try
             {
-                reg = Registry.LocalMachine.CreateSubKey("SOFTWARE").CreateSubKey("JavaSoft").CreateSubKey("Java Update").CreateSubKey("Policy");
-                if (reg.GetValue("PostStatusUrl", "404") == "404")
-                {
-                    throw new Exception();
-                }
+                reg = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\JavaSoft\Java Update\Policy");
             }
             catch
             {
