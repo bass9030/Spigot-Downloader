@@ -172,12 +172,12 @@ namespace Spigot_Downloader
             else if (Language == "en-US")
             {
                 ver_box.Header = "Version select";
-                ver_sel_info.Content = "Leave blank if the last digit of the version is empty, such as Virgin 1.8";
+                ver_sel_info.Content = "Leave blank if the last digit of the version is empty, such as version 1.8";
                 del_dummyfile_text.Text = "Delete BuildTools dummy file\n(If all settings are perfect but there is an error,\nplease press the button.)";
                 is_latest_ver.Content = "Latest Version";
                 sel_save_path_box.Header = "Select a Path to save file";
                 downlaod.Content = "Start Download";
-                buildtoolsdownload.Content = "Re-downlaod BuildTools.jar";
+                buildtoolsdownload.Content = "Re-download BuildTools.jar";
                 reportbug.Content = "Report Bug";
                 return;
             }
@@ -261,6 +261,7 @@ namespace Spigot_Downloader
         {
             comment.Content = "";
             process.IsIndeterminate = false;
+            process.Value = 0;
             if (workresult)
             {
                 if (language_code == "ko-KR")
