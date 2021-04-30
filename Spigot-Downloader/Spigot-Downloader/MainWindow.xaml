@@ -9,7 +9,7 @@
     <Grid>
         <GroupBox x:Name="ver_box" Header="Version select" Margin="10,0,289,151" Height="76" VerticalAlignment="Bottom">
             <Grid Margin="0,0,-2,-5" Height="70" VerticalAlignment="Top">
-                <Label x:Name="ver_sel_info" Content="Leave blank if the last digit of the version is empty, such as Virgin 1.8" Height="26" VerticalAlignment="Bottom" Margin="0,0,0,44" HorizontalAlignment="Left" Width="412"/>
+                <Label x:Name="ver_sel_info" Content="Leave blank if the last digit of the version is empty, such as version 1.8" Height="26" VerticalAlignment="Bottom" Margin="0,0,0,44" HorizontalAlignment="Left" Width="412"/>
                 <TextBox x:Name="ver1" Margin="5,0,0,16" TextWrapping="Wrap" Text="" TextAlignment="Center" IsEnabled="False" Height="23" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="24"/>
                 <Label x:Name="dot1" Content="." Margin="29,0,0,16" VerticalAlignment="Bottom" Height="23" FontWeight="Bold" IsEnabled="False" HorizontalAlignment="Left" Width="13"/>
                 <TextBox x:Name="ver2" Margin="42,0,0,16" TextWrapping="Wrap" Text="" TextAlignment="Center" IsEnabled="False" Height="23" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="24"/>
